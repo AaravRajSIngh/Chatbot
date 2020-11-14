@@ -1,0 +1,177 @@
+input{
+
+    width: 300px;
+    align-self: center;
+    color:#7cfc00;
+    padding: 10px; 
+    border: 1px solid #ccc;
+
+}
+#main-wrapper{
+	background-color: rgba(0,0,0,1.6);
+	border-radius : 1px;
+	border: 3px solid #f1f1f1;
+	width: 300px;
+	margin-left: 450px;
+
+	border-radius: 105px;
+
+}
+.myform{
+	padding: 10px;
+	border-radius : 10px;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 105px;
+	border: 3px solid #ffffff;
+	width: 500px;
+	margin: 0 auto; 
+}
+
+.inner_container{
+	width:550px;
+	color: rgba(0,0,0,0.8);
+	margin:0 auto;
+	margin-left: 100px;
+
+}
+
+#log{
+	color: white;
+}
+#login_btn{
+   
+    color: rgba(0,0,0,0.8);
+    margin-left: 40px;
+	margin-top:10px;
+    padding:10px;
+    border-radius: 25px;
+    width:40%;
+	font-size:13px;
+	font-weight: bold;
+}
+#us{
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 25px
+
+}
+
+#pass{
+background-color: rgba(0,0,0,0.7);
+	border-radius: 25px
+
+}
+
+#register_btn{
+		
+	border-radius: 25px;
+    color: rgba(0,0,0,0.8);
+	margin-top:10px;
+	margin-bottom:0	px;
+	padding:10px;
+    width:40%;
+    margin-left: 40px;
+	font-size:13px;
+	font-weight: bold;
+	
+}
+
+#un{
+	color: white;
+}
+#pas{
+	color:white;
+}
+#back_btn{
+	border-radius: 25px;
+    color: rgba(0,0,0,0.8);
+	margin-top:10px;
+	margin-bottom:0	px;
+	padding:10px;
+    width:40%;
+    margin-left: 40px;
+	font-size:13px;
+	font-weight: bold;
+	
+}
+#run{
+	color:white;
+}
+
+#rpas{
+
+	color:white;
+}
+#rcpas{
+
+	color:white;
+}
+#ruser{
+background-color: rgba(0,0,0,0.7);
+	border-radius: 25px
+
+}
+#rpass{
+background-color: rgba(0,0,0,0.7);
+	border-radius: 25px
+
+}
+
+#rcpass{
+background-color: rgba(0,0,0,0.7);
+	border-radius: 25px
+
+}
+#logout_button{
+	background-color: rgba(0,0,0,0.8);
+    color: white;
+	margin-top:10px;
+    padding:10px;
+    border-radius: 25px;
+    width: 60%;
+	font-size:18px;
+	font-weight: bold;
+}
+#regis{
+	color:white;
+}
+#signup_btn {
+border-radius: 25px;
+    color: rgba(0,0,0,0.8);
+	margin-top:10px;
+	margin-bottom:0	px;
+	padding:10px;
+    width:40%;
+    margin-left: 40px;
+	font-size:13px;
+	font-weight: bold;
+	}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    max-width: 100%;
+    max-height: auto;
+    object-fit: 100%;
+}
+#admin_btn{border-radius:25px;
+
+    color: rgba(0,0,0,0.8);
+	margin-top:10px;
+	margin-bottom:0px;
+	padding:10px;
+    width:40%;
+    margin-left: 40px;
+	font-size:13px;
+	font-weight: bold;
+}
+#admin{
+	color: white;
+}
+#adminp{
+	color: white;
+
+}
+#adminpass{
+	border-radius: 25px;
+	background-color: rgba(0,0,0,0.8);
+}

@@ -1,0 +1,58 @@
+body,html{
+	margin: 0;
+	padding: 0;
+}
+header{
+	width: 100%;
+	height: 70px;
+	background-color: #282828;
+}
+h1{
+	position: absolute;
+	padding: 3px;
+	float: left;
+	margin-left: 2%;
+	margin-top: 10px;
+	font-family: 'Alfa Slab One',cursive;
+	color: #39ca74;
+}
+span{
+	color: #ffffff;
+}
+ul{
+	width: auto;
+	float: right;
+	margin-top: 8px;
+}
+li{
+	display: inline-block;
+	padding: 15px 30px;
+
+}
+
+
+a{
+	text-align: center;
+	color: #39ca74;
+	text-decoration: none;
+	font-family: 'Open Sans',sans-serif;
+	font-size: 0.8vw;
+}
+
+a:hover{
+	color: #fff;
+	transition: 0.5s;
+}
+img{
+	width: 100%;
+	margin-top: -16px;
+}
+input{
+	color: #000;
+	marker-end: 25%
+
+}
+input:hover{
+	color:#fff;
+	transition: 0.5s;
+}

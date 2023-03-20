@@ -1,25 +1,42 @@
 <?php
-date_default_timezone_set('Asia/Kolkata');
-include('database.inc.php');
-$txt=mysqli_real_escape_string($con,$_POST['txt']);
-$sql="select reply from chatbot_hints where question like '%$txt%'";
+date_default_timezone_set('Asia/Dhaka');
+require_once 'dbconfig/config.php';
 
-$res=mysqli_query($con,$sql);
-
-if(mysqli_num_rows($res)>0){
-
-	$row=mysqli_fetch_assoc($res);
-	$html=$row['reply'];
-
+$stmt = $db->quote($_POST['txt']);
+$sql="SELECT reply from chatbot_hints WHERE question LIKE $stmt";
+$result = $db->prepare($sql);
+$result->execute();
+if($result->rowCount() > 0){
+	$row = $result->fetch(PDO::FETCH_ASSOC);
+	$content = $row['reply'];
 }else{
-	$html="Sorry not be able to understand you";
+	$content = "Sorry not be able to understand you";
 }
+$result->closeCursor();
 
 $added_on=date('Y-m-d h:i:s');
-mysqli_query($con,"insert into message(message,added_on,type) values('$txt','$added_on','user')");
+$db->prepare("INSERT INTO message(message,added_on,type) VALUES('$stmt','$added_on','user')");
+
+/*
+********************
+NO Need to do this
+**$db->execute(); 
+**$db->closeCursor();
+*********************
+*/
+
 $added_on=date('Y-m-d h:i:s');
-mysqli_query($con,"insert into message(message,added_on,type) values('$html','$added_on','bot')");
-echo $html;
+$db->prepare("INSERT INTO message(message,added_on,type) VALUES('$content','$added_on','bot')");
+
+/*
+********************
+** NO Need to do this
+** $db->execute();  
+** $db->closeCursor();
+**********************
+*/
+
+echo $content;
 echo " ";
 ?>
 
@@ -40,5 +57,3 @@ echo " ";
 
 </body>
 </html>-->
-
-

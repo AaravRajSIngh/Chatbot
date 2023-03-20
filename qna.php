@@ -66,30 +66,25 @@
 			
 		</tr>
 		<?php
-		$conn=mysqli_connect("localhost","root","","youtube");
-		if($conn-> connect_error){
-			die("connection failed:".$conn-> connect_error);
-		}
-		$sql = "SELECT id,question,reply from chatbot_hints";
-		$result= $conn-> query($sql);
-
-		if($result-> num_rows >0){
-			while ($row =$result ->fetch_assoc()) {
+		require_once 'dbconfig/config.php';
+		$sql = "SELECT id,question,reply FROM chatbot_hints";
+		$stmt = $db->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 				echo "<tr>
 				<td>".$row["id"]."</td>
 				<td>".$row["question"]." </td>
 				<td> ".$row["reply"]." </td>
 				<td><a href='update.php?rn=$row[id]&ques=$row[question]&rep=$row[reply]'>Edit/Update</td>
 				<td><a href='delete.php?rn=$row[id] onclick='return checkdelete()'>Delete</td></tr> ";
-					
-				# code...
 			}
 			echo "</table>";
 		}
 		else{
 			echo "0 result";
 		}
-		$conn-> close();
+		$stmt->closeCursor();
 		?>
 
 	</table>

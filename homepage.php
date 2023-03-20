@@ -1,6 +1,6 @@
 <?php
-date_default_timezone_set('Asia/Kolkata');
-include('database.inc.php');
+date_default_timezone_set('Asia/Dhaka');
+require_once 'dbconfig/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,27 +49,27 @@ body
                   <div class="card-body messages-box">
 					 <ul class="list-unstyled messages-list">
 							<?php
-							$res=mysqli_query($con,"select * from message");
-							if(mysqli_num_rows($res)>0){
-								$html='';
-								while($row=mysqli_fetch_assoc($res)){
-									$message=$row['message'];
-									$added_on=$row['added_on'];
-									$strtotime=strtotime($added_on);
-									$time=date('h:i A',$strtotime);
-									$type=$row['type'];
-									if($type=='user'){
-										$class="messages-me";
-										$imgAvatar="user_avatar.png";
-										$name="Me";
+							$sql = "SELECT * FROM message";
+							$stmt = $db->prepare($sql);
+							$stmt->execute();
+							if($stmt->rowCount()>0){
+								$content='';
+								while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+									$message = $row['message'];
+									$added_on = $row['added_on'];
+									$strtotime = strtotime($added_on);
+									$time = date('h:i A',$strtotime);
+									$type = $row['type'];
+									if($type == 'user'){
+										$class = "messages-me";
+										$imgAvatar = "user_avatar.png";
+										$name = "Me";
 									}else{
 										$class="messages-you";
 										$imgAvatar="bot_avatar.png";
 										$name="Chatbot";
-
-										
 									}
-									$html.='<li class="'.$class.' clearfix"><span class="message-img"><img src="image/'.$imgAvatar.'" class="avatar-sm rounded-circle"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">'.$name.'</strong> <small class="time-messages text-muted"><span class="fas fa-time"></span> <span class="minutes">'.$time.'</span></small> </div><p class="messages-p">'.$message.'</p></div></li>';
+									$content .= '<li class="'.$class.' clearfix"><span class="message-img"><img src="image/'.$imgAvatar.'" class="avatar-sm rounded-circle"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">'.$name.'</strong> <small class="time-messages text-muted"><span class="fas fa-time"></span> <span class="minutes">'.$time.'</span></small> </div><p class="messages-p">'.$message.'</p></div></li>';
 								}
 								//echo $html;
 							}else{
@@ -79,6 +79,7 @@ body
 								</li>
 								<?php
 							}
+							$stmt->closeCursor();
 							?>
                     
                      </ul>
@@ -141,6 +142,3 @@ body
       </script>
    </body>
 </html>
-
-
-

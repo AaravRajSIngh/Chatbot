@@ -1,11 +1,5 @@
-
 <?php
-		$conn=mysqli_connect("localhost","root","","youtube");
-		if($conn-> connect_error){
-			die("connection failed:".$conn-> connect_error);
-		}	
-	
-
+require_once 'dbconfig/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -84,22 +78,20 @@ if(isset($_POST['submit']))
 	$id=$_POST['id'];
 	$messages=$_POST['messages'];
 
+	try {
+		$sql = "INSERT INTO invalid VALUES('','$messages')";
+		$stmt = $db->prepare($sql);
+		if ( $stmt->execute() ) {
+			echo '<script type="text/javascript"> alert("Success!") </script>';
+		} else {
+			echo '<script type="text/javascript"> alert("'throw new PDOException($e->getMessage())'") </script>';
+		} 
+		$stmt->closeCursor();
 
-$query="insert into invalid values('','$messages')";
-$query_run = mysqli_query($conn,$query);
-
-
-						
-						if($query_run)
-						{
-							echo '<script type="text/javascript"> alert("Success!") </script>';						
-						}
-						else
-						{
-							echo '<script type="text/javascript"> alert("'.mysqli_error($conn).'") </script>';
-						
-					}
-					?>
+	} catch (PDOException $e) {
+		throw new PDOException ($e->getMessage());
+	}
+?>
 
 <META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/homepage.php">
 <?php

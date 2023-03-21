@@ -54,10 +54,12 @@ body
 
 
  			<label><b id="run">Username:</b></label><br>
-			<input name="username" type="text" id="ruser" class="inputvalues" placeholder="Type your username" required/><br>
+			<input name="username" type="text" id="ruser" class="inputvalues" placeholder="Username" required/><br>
 			<label><b id="rpas">Password:</b></label><br>
-			<input name="password" type="password" id="rpass" class="inputvalues" placeholder="Your password" required/><br>
-			<label><b for="email">Email</b></label><br>
+			<input name="password" type="password" id="rpass" class="inputvalues" placeholder="Password" required/><br>
+				<label><b id="rcpas">Confirm Password:</b></label><br>
+			<input name="password2" type="password" id="rcpass" class="inputvalues" placeholder="Confirm password" required/><br>
+			<label><b id="mail">Email:</b></label><br>
 			<input name="email" type="email" id="email" class="inputvalues" placeholder="Email" required/><br>
 			<input name="submit_btn" type="submit" id="signup_btn" value="Sign Up"/><br>
 			<a href="index.php"><input type="button" id="back_btn" value="Back"/></a>
@@ -74,6 +76,7 @@ body
 			#	$fullname =$_POST['fullname'];
 				$username = $_POST['username'];
 				$password = $_POST['password'];
+				$password2 = $_POST['password2'];
 				$email = $_POST['email'];
 			#	$gender = $_POST['gender'];
 			#	$qualification = $_POST['qualification'];
@@ -81,7 +84,7 @@ body
 				//echo '<script type="text/javascript"> alert("User already exists.. try another username") </script>';
 				//echo '<script type="text/javascript"> alert("'.$fullname.' ---'.$username.' --- '.$password.' --- '.$gender.' --- '.$qualification.'"  ) </script>';
 
-				if(strlen($password) > 5)
+				if($password == $password2)
 				{
 					$sql = "SELECT * FROM users WHERE username='$username'";
 					$stmt = $db->prepare($sql);
@@ -99,7 +102,9 @@ body
 						}
 						$stmt->closeCursor();
 				}
-			}
+			} else{
+				echo '<script type="text/javascript"> alert("Passwords does not match!") </script>';	
+				}
 		}  
 		?>
 	</div>

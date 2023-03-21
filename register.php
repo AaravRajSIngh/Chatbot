@@ -36,7 +36,7 @@ body
 			<img src="image/user_avatar.png" class="avatar"/>
 		</center>
 	
-		<form class="myform" action="register.php"method="post">
+		<form class="myform" action="register.php" method="POST">
 		<!--	<label><b>Full Name:</b></label><br>
 			<input name="fullname" type="text" class="inputvalues" placeholder="Type your Full Name" required/><br>
 			<label><b>Gender:</b></label>
@@ -57,8 +57,8 @@ body
 			<input name="username" type="text" id="ruser" class="inputvalues" placeholder="Type your username" required/><br>
 			<label><b id="rpas">Password:</b></label><br>
 			<input name="password" type="password" id="rpass" class="inputvalues" placeholder="Your password" required/><br>
-			<label><b id="rcpas">Confirm Password:</b></label><br>
-			<input name="cpassword" type="password" id="rcpass" class="inputvalues" placeholder="Confirm password" required/><br>
+			<label><b for="email">Email</b></label><br>
+			<input name="email" type="email" id="email" class="inputvalues" placeholder="Email" required/><br>
 			<input name="submit_btn" type="submit" id="signup_btn" value="Sign Up"/><br>
 			<a href="index.php"><input type="button" id="back_btn" value="Back"/></a>
 		
@@ -74,14 +74,14 @@ body
 			#	$fullname =$_POST['fullname'];
 				$username = $_POST['username'];
 				$password = $_POST['password'];
-				$cpassword = $_POST['cpassword'];
+				$email = $_POST['email'];
 			#	$gender = $_POST['gender'];
 			#	$qualification = $_POST['qualification'];
 
 				//echo '<script type="text/javascript"> alert("User already exists.. try another username") </script>';
 				//echo '<script type="text/javascript"> alert("'.$fullname.' ---'.$username.' --- '.$password.' --- '.$gender.' --- '.$qualification.'"  ) </script>';
 
-				if($password==$cpassword)
+				if(strlen($password) > 5)
 				{
 					$sql = "SELECT * FROM users WHERE username='$username'";
 					$stmt = $db->prepare($sql);
@@ -90,19 +90,17 @@ body
 						echo '<script type="text/javascript"> alert("User already exists.. try another username") </script>';
 						$stmt->closeCursor();
 					} else {
-						$sql = "INSERT INTO users() VALUES(NULL, '$username','$password')";
+						$sql = "INSERT INTO users VALUES(NULL, '$username', '$email', '$password')";
 						$stmt = $db->prepare($sql);
 						if ( $stmt->execute() ) {
 							echo '<script type="text/javascript"> alert("User Registered.. Go to login page to login") </script>';
 						} else {
-							echo '<script type="text/javascript"> alert("throw new PDOException($e->getMessage()") </script>';
+							echo '<script type="text/javascript"> alert("throw new PDOException($e->getMessage())") </script>';
 						}
 						$stmt->closeCursor();
 				}
 			}
-		}  else {
-				echo '<script type="text/javascript"> alert("Password and confirm password does not match!") </script>';	
-				}
+		}  
 		?>
 	</div>
 </body>

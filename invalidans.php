@@ -73,29 +73,25 @@ require_once 'dbconfig/config.php';
 
 
 <?php
+
 if(isset($_POST['submit']))
 {
-	$id=$_POST['id'];
-	$messages=$_POST['messages'];
+	// $id = $_POST['id'];
+	$messages = $_POST['messages'];
 
 	try {
-		$sql = "INSERT INTO invalid VALUES('','$messages')";
+		$sql = "INSERT INTO invalid() VALUES(NULL, '$messages')";
 		$stmt = $db->prepare($sql);
 		if ( $stmt->execute() ) {
 			echo '<script type="text/javascript"> alert("Success!") </script>';
 		} else {
-			echo '<script type="text/javascript"> alert("'throw new PDOException($e->getMessage())'") </script>';
+			echo '<script type="text/javascript"> alert("throw new PDOException($e->getMessage())") </script>';
 		} 
 		$stmt->closeCursor();
 
 	} catch (PDOException $e) {
 		throw new PDOException ($e->getMessage());
 	}
-?>
-
-<META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/homepage.php">
-<?php
-
 }
 ?>
 	

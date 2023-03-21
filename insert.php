@@ -96,7 +96,7 @@ if(isset($_POST['submit']))
 	if($stmt->execute()) {
 		echo '<script type="text/javascript"> alert("Success!") </script>';	
 	} else {
-		echo '<script type="text/javascript"> alert("throw new PDOException($e->getMessage());") </script>';
+		echo '<script type="text/javascript"> alert("throw new PDOException($e->getMessage())") </script>';
 	}
 	$stmt->closeCursor();
 	} catch (PDOException $e) {

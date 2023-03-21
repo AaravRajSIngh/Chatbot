@@ -97,11 +97,11 @@ background-color: rgba(0,0,0,0.7);
 	color:white;
 }
 
-#rpas{
+#rpass{
 
 	color:white;
 }
-#rcpas{
+#pass2{
 
 	color:white;
 }
@@ -114,12 +114,12 @@ background-color: rgba(0,0,0,0.7);
 	border-radius: 25px;
 
 }
-#rpass{
+#password{
 background-color: rgba(0,0,0,0.7);
 	border-radius: 25px;
 
 }
-#rcpass{
+#password2{
 	border-radius: 25px;
 	background-color: rgba(0,0,0,0.7);
 

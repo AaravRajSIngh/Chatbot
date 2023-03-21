@@ -55,10 +55,10 @@ body
 
  			<label><b id="run">Username:</b></label><br>
 			<input name="username" type="text" id="ruser" class="inputvalues" placeholder="Username" required/><br>
-			<label><b id="rpas">Password:</b></label><br>
-			<input name="password" type="password" id="rpass" class="inputvalues" placeholder="Password" required/><br>
-				<label><b id="rcpas">Confirm Password:</b></label><br>
-			<input name="password2" type="password" id="rcpass" class="inputvalues" placeholder="Confirm password" required/><br>
+			<label><b id="pass">Password:</b></label><br>
+			<input name="password" type="password" id="password" class="inputvalues" placeholder="Password" required/><br>
+				<label><b id="pass2">Confirm Password:</b></label><br>
+			<input name="password2" type="password" id="password2" class="inputvalues" placeholder="Confirm password" required/><br>
 			<label><b id="mail">Email:</b></label><br>
 			<input name="email" type="email" id="email" class="inputvalues" placeholder="Email" required/><br>
 			<input name="submit_btn" type="submit" id="signup_btn" value="Sign Up"/><br>

@@ -72,10 +72,11 @@ body
 			$username=$_POST['username'];
 			$password=$_POST['password'];
 			
-			$query="select * from userinfotable WHERE username='$username' AND password='$password'";
+			$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 			
-			$query_run = mysqli_query($con,$query);
-			if(mysqli_num_rows($query_run)>0)
+			$stmt = $db->prepare($sql);
+			$stmt->execute();
+			if( $stmt->rowCount() > 0)
 			{
 				// valid
 				$_SESSION['username']= $username;

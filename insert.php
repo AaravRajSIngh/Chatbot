@@ -1,11 +1,5 @@
-
 <?php
-		$conn=mysqli_connect("localhost","root","","youtube");
-		if($conn-> connect_error){
-			die("connection failed:".$conn-> connect_error);
-		}	
-	
-
+require_once 'dbconfig/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -96,25 +90,20 @@ if(isset($_POST['submit']))
 	$question=$_POST['question'];
 	$reply=$_POST['reply'];
 
-$query="insert into chatbot_hints values('$id','$question','$reply')";
-$query_run = mysqli_query($conn,$query);
-
-
-						
-						if($query_run)
-						{
-							echo '<script type="text/javascript"> alert("Success!") </script>';						
-						}
-						else
-						{
-							echo '<script type="text/javascript"> alert("'.mysqli_error($conn).'") </script>';
-						
-					}
-					?>
-
-<META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/qna.php">
-<?php
-
+	try {
+	$sql = "INSERT INTO chatbot_hints VALUES('$id','$question','$reply')";
+	$stmt = $db->prepare($sql);
+	if($stmt->execute()) {
+		echo '<script type="text/javascript"> alert("Success!") </script>';	
+	} else {
+		echo '<script type="text/javascript"> alert("throw new PDOException($e->getMessage())") </script>';
+	}
+	$stmt->closeCursor();
+	} catch (PDOException $e) {
+		throw new PDOException($e->getMessage());
+	}
 }
 ?>
+
+<!-- <META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/qna.php"> -->
 	

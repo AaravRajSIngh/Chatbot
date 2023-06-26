@@ -1,14 +1,8 @@
-
 <?php
-		$conn=mysqli_connect("localhost","root","","youtube");
-		if($conn-> connect_error){
-			die("connection failed:".$conn-> connect_error);
-		}
+	require_once 'dbconfig/config.php';
 		$rn=$_GET['rn'];
 		$ques=$_GET['ques'];
 		$rep=$_GET['rep'];
-	
-
 ?>
 
 <!DOCTYPE html>
@@ -96,17 +90,15 @@ if($_GET['submit'])
 	$question=$_GET['question'];
 	$reply=$_GET['reply'];
 
-$query="UPDATE CHATBOT_HINTS SET id='$id',question='$question',reply='$reply' WHERE id='$id' ";
-$data=mysqli_query($conn,$query);
-if($data){
-
-echo "<script>alert('Record Updated')</script>";
+$sql = "UPDATE CHATBOT_HINTS SET id='$id',question='$question',reply='$reply' WHERE id='$id' ";
+$stmt = $db->prepare($sql);
+if ( $stmt->execute() ) {
+	echo "<script>alert('Record Updated')</script>";
+}
 ?>
 
 <META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/qna.php">
 <?php
-
-}
 else
 {
 	echo "Failed To Update Record";

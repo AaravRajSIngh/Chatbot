@@ -34,25 +34,26 @@
 			<th align="center">Invalid query/response</th>
 			</tr>
 		<?php
-		$conn=mysqli_connect("localhost","root","","youtube");
-		if($conn-> connect_error){
-			die("connection failed:".$conn-> connect_error);
-		}
-		$sql = "SELECT id,messages from invalid";
-		$result= $conn-> query($sql);
-
-		if($result-> num_rows >0){
-			while ($row =$result ->fetch_assoc()) {
+		require_once 'dbconfig/config.php';
+		try {
+		$sql = "SELECT id,messages FROM invalid";
+		$stmt = $db->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			while ($row =$stmt->fetch(PDO::FETCH_ASSOC)) {
 				echo "<tr><td>".$row["id"]."</td><td>".$row["messages"]."</td></tr>";
-				# code...
 			}
 			echo "</table>";
 		}
 		else{
 			echo "0 result";
 		}
-		$conn-> close();
-		?>
+		$stmt->closeCursor();
+	} catch (PDOException $e) {
+		throw new Exception($e->getMessage());
+		
+	}
+?>
 
 	</table>
 

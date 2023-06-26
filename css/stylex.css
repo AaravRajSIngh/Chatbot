@@ -97,28 +97,37 @@ background-color: rgba(0,0,0,0.7);
 	color:white;
 }
 
-#rpas{
+#rpass{
 
 	color:white;
 }
-#rcpas{
+#pass2{
+
+	color:white;
+}
+#mail{
 
 	color:white;
 }
 #ruser{
 background-color: rgba(0,0,0,0.7);
-	border-radius: 25px
+	border-radius: 25px;
 
 }
-#rpass{
+#password{
 background-color: rgba(0,0,0,0.7);
-	border-radius: 25px
+	border-radius: 25px;
+
+}
+#password2{
+	border-radius: 25px;
+	background-color: rgba(0,0,0,0.7);
 
 }
 
-#rcpass{
-background-color: rgba(0,0,0,0.7);
-	border-radius: 25px
+#email{
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 25px;
 
 }
 #logout_button{
@@ -153,8 +162,8 @@ border-radius: 25px;
     max-height: auto;
     object-fit: 100%;
 }
-#admin_btn{border-radius:25px;
-
+#admin_btn{
+	border-radius:25px;
     color: rgba(0,0,0,0.8);
 	margin-top:10px;
 	margin-bottom:0px;

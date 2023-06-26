@@ -1,23 +1,20 @@
 <?php
-$conn=mysqli_connect("localhost","root","","youtube");
-if($conn-> connect_error){
-die("connection failed:".$conn-> connect_error);
-}
+
 $id=$_GET['rn'];
-$query="DELETE FROM CHATBOT_HINTS WHERE ID ='$id' ";
+ try {
+ 	$sql="DELETE FROM CHATBOT_HINTS WHERE ID ='$id'";
+ 	$stmt = $db->prepare($sql);
+ 	$stmt->bindValue('ID', $id, PDO::PARAM_INT);
+ 	if ( $stmt->execute() ) {
+ 		echo "<script>alert('Record Deleted from database')</script>";
+ 	} else {
+ 		echo "<font color='red'>Failed to delete fromm db!!";
+ 	}
 
-$data=mysqli_query($conn,$query);
+ } catch (PDOException $e) {
+ 	throw new PDOException($e->getMessage());
+ }
 
-if($data)
-{
-	echo "<script>alert('Record Deleted from database')</script>";
 ?>
 
 <META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/qna.php">
-<?php
-}
-else {
-		# code...
-	echo "<font color='red'>Failed to delete fromm db!!";
-	}	
-?>

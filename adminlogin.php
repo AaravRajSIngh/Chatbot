@@ -47,26 +47,25 @@
 			<th align="center">Added on</th>
 			<th align="center">Type</th>
 		</tr>
-		<?php
-		$conn=mysqli_connect("localhost","root","","youtube");
-		if($conn-> connect_error){
-			die("connection failed:".$conn-> connect_error);
-		}
-		$sql = "SELECT id,message,added_on,type from message";
-		$result= $conn-> query($sql);
-
-		if($result-> num_rows >0){
-			while ($row =$result ->fetch_assoc()) {
+	<?php
+	require_once 'dbconfig/config.php';
+		try {
+			$sql = "SELECT id,message,added_on,type FROM message";
+			$stmt = $db->prepare($sql);
+			$stmt->execute();
+			if($stmt->rowCount() > 0){
+				while ($row =$stmt->fetch(PDO::FETCH_ASSOC)) {
 				echo "<tr><td>".$row["id"]."</td><td>".$row["message"]." </td><td> ".$row["added_on"]." </td><td> ".$row['type']."</td></tr>";
-				# code...
 			}
 			echo "</table>";
-		}
-		else{
+		} else {
 			echo "0 result";
 		}
-		$conn-> close();
-		?>
+		$stmt->closeCursor();
+		} catch (PDOException $e) {
+			throw new PDOException($e->getMessage());
+		}
+	?>
 
 	</table>
 

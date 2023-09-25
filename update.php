@@ -90,18 +90,16 @@ if($_GET['submit'])
 	$question=$_GET['question'];
 	$reply=$_GET['reply'];
 
-$sql = "UPDATE CHATBOT_HINTS SET id='$id',question='$question',reply='$reply' WHERE id='$id' ";
-$stmt = $db->prepare($sql);
-if ( $stmt->execute() ) {
-	echo "<script>alert('Record Updated')</script>";
-}
-?>
+	$sql = "UPDATE CHATBOT_HINTS SET id='$id',question='$question',reply='$reply' WHERE id='$id' ";
+	$stmt = $db->prepare($sql);
+	if ( $stmt->execute() ) {
+		echo "<script>alert('Record Updated')</script>";
+		?>
 
-<META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/qna.php">
-<?php
-else
-{
-	echo "Failed To Update Record";
-}
+		<META HTTP-EQUIV="Refresh" CONTENT="0; URL=http://localhost:7882/qna.php">
+		<?php
+	} else {
+		echo "Failed To Update Record";
+	}
 }
 ?>

@@ -72,10 +72,10 @@ body
 			$username=$_POST['username'];
 			$password=$_POST['password'];
 			
-			$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-			
+			$sql = "SELECT * FROM users WHERE username=? AND password=?";
 			$stmt = $db->prepare($sql);
-			$stmt->execute();
+			$stmt->execute([$username, $password]);
+
 			if( $stmt->rowCount() > 0)
 			{
 				// valid
